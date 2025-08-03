@@ -1,4 +1,6 @@
-# Rizz Gyatt Sigma
+# Run From The Towers
+
+ You can play the game here: [https://lucamurdoch.github.io/Run-From-The-Towers/](https://lucamurdoch.github.io/Run-From-The-Towers/)
 
 "Run From The Towers" is a fun, simple 2D web-based avoider game where you control a character to collect "Towers" and dodge falling "Planes".
 
@@ -20,4 +22,4 @@
 1.  **Download/Clone:** Download or clone this repository to your local machine.
 2.  **Open `index.html`:** Navigate to the project directory and open the `index.html` file in your preferred web browser. That's it! The game should start automatically.
 
-3.  You can play the game here: [https://lucamurdoch.github.io/Run-From-The-Towers/](https://lucamurdoch.github.io/Run-From-The-Towers/)
+
