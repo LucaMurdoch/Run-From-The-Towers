@@ -9,18 +9,21 @@ const restartButton = document.getElementById('restart-button');
 const endSound = new Audio('End.mp3');
 
 let score = 0;
-let playerX = gameContainer.offsetWidth / 2;
-let playerY = gameContainer.offsetHeight / 2;
+let playerX;
+let playerY;
 let gameInterval;
 let spawnInterval;
 let isGameOver = false;
 
 const PLAYER_SIZE = 50;
 const ITEM_SIZE = 60;
-const GAME_WIDTH = gameContainer.offsetWidth;
-const GAME_HEIGHT = gameContainer.offsetHeight;
+let GAME_WIDTH;
+let GAME_HEIGHT;
 
 function initGame() {
+    GAME_WIDTH = gameContainer.offsetWidth;
+    GAME_HEIGHT = gameContainer.offsetHeight;
+
     score = 0;
     scoreDisplay.textContent = `Score: ${score}`;
     playerX = GAME_WIDTH / 2;
@@ -133,6 +136,22 @@ gameContainer.addEventListener('mousemove', (e) => {
     if (isGameOver) return;
     playerX = e.clientX - gameContainer.getBoundingClientRect().left;
     playerY = e.clientY - gameContainer.getBoundingClientRect().top;
+
+    // Keep player within bounds
+    playerX = Math.max(PLAYER_SIZE / 2, Math.min(GAME_WIDTH - PLAYER_SIZE / 2, playerX));
+    playerY = Math.max(PLAYER_SIZE / 2, Math.min(GAME_HEIGHT - PLAYER_SIZE / 2, playerY));
+
+    player.style.left = `${playerX - PLAYER_SIZE / 2}px`;
+    player.style.top = `${playerY - PLAYER_SIZE / 2}px`;
+});
+
+// Player movement (touch)
+gameContainer.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // Prevent scrolling
+    if (isGameOver) return;
+    const touch = e.touches[0];
+    playerX = touch.clientX - gameContainer.getBoundingClientRect().left;
+    playerY = touch.clientY - gameContainer.getBoundingClientRect().top;
 
     // Keep player within bounds
     playerX = Math.max(PLAYER_SIZE / 2, Math.min(GAME_WIDTH - PLAYER_SIZE / 2, playerX));
