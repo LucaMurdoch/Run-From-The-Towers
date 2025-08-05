@@ -16,7 +16,7 @@ let spawnInterval;
 let isGameOver = false;
 
 const PLAYER_SIZE = 50;
-const ITEM_SIZE = 60;
+const ITEM_SIZE = 200;
 let GAME_WIDTH;
 let GAME_HEIGHT;
 
